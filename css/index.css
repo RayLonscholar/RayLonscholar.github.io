@@ -1334,7 +1334,7 @@ canvas:not(#ribbon-canvas),
   }
 }
 :root {
-  --global-font-size: 14px;
+  --global-font-size: 16px;
   --global-bg: #fff;
   --font-color: #4c4948;
   --hr-border: #d2ebfd;
@@ -1350,10 +1350,10 @@ canvas:not(#ribbon-canvas),
   --tab-button-hover-bg: #dcdcdc;
   --tab-button-active-bg: #fff;
   --card-bg: #fff;
-  --card-meta: #858585;
+  --card-meta: #5a5ab7;
   --sidebar-bg: #f6f8fa;
   --sidebar-menu-bg: #fff;
-  --btn-hover-color: #35356b;
+  --btn-hover-color: #4c4c9a;
   --btn-color: #fff;
   --btn-bg: #5a5ab7;
   --text-bg-hover: rgba(90,90,183,0.7);
@@ -1367,7 +1367,7 @@ canvas:not(#ribbon-canvas),
   --toc-link-color: #666261;
   --card-box-shadow: 0 3px 8px 6px rgba(7,17,27,0.05);
   --card-hover-box-shadow: 0 3px 8px 6px rgba(7,17,27,0.09);
-  --pseudo-hover: #35356b;
+  --pseudo-hover: #4c4c9a;
   --headline-presudo: #a0a0a0;
   --scrollbar-color: #5a5ab7;
   --default-bg-color: #5a5ab7;
@@ -1545,14 +1545,14 @@ blockquote > :last-child {
   margin-bottom: 0 !important;
 }
 :root {
-  --hl-color: #a6accd;
-  --hl-bg: #292d3e;
-  --hltools-bg: #252938;
-  --hltools-color: #a6accd;
-  --hlnumber-bg: #292d3e;
-  --hlnumber-color: rgba(166,172,205,0.5);
-  --hlscrollbar-bg: #393f57;
-  --hlexpand-bg: linear-gradient(180deg, rgba(41,45,62,0.6), rgba(41,45,62,0.9));
+  --hl-color: #eff;
+  --hl-bg: #212121;
+  --hltools-bg: #1c1c1c;
+  --hltools-color: rgba(238,255,255,0.8);
+  --hlnumber-bg: #212121;
+  --hlnumber-color: rgba(238,255,255,0.5);
+  --hlscrollbar-bg: #353535;
+  --hlexpand-bg: linear-gradient(180deg, rgba(33,33,33,0.6), rgba(33,33,33,0.9));
 }
 [data-theme='dark'] {
   --hl-color: rgba(255,255,255,0.7);
@@ -1580,7 +1580,7 @@ figure.highlight pre .meta {
   color: #c792ea;
 }
 figure.highlight pre .comment {
-  color: #676e95;
+  color: #969896;
 }
 figure.highlight pre .variable,
 figure.highlight pre .attribute,
@@ -1643,7 +1643,7 @@ figure.highlight pre .javascript .function {
   color: #c792ea;
 }
 .container figure.highlight .line.marked {
-  background-color: rgba(113,124,180,0.314);
+  background-color: rgba(97,97,97,0.314);
 }
 .container figure.highlight table {
   display: block;
@@ -1833,8 +1833,8 @@ figure.highlight pre .javascript .function {
 .container figure.highlight {
   margin: 0 0 24px;
   border-radius: 7px;
-  -webkit-box-shadow: 0 5px 10px 0 rgba(41,45,62,0.4);
-  box-shadow: 0 5px 10px 0 rgba(41,45,62,0.4);
+  -webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,0.4);
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.4);
   -webkit-transform: translateZ(0);
 }
 .container figure.highlight .highlight-tools .macStyle {
@@ -2955,7 +2955,7 @@ figure.highlight pre .javascript .function {
   color: #5a5ab7;
 }
 #aside-content #card-toc .toc-content .toc-link.active {
-  background: #00c4b6;
+  background: #858585;
   color: #fff;
 }
 #aside-content .sticky_layout:only-child > :first-child {
@@ -3982,7 +3982,7 @@ figure.highlight pre .javascript .function {
   text-align: center;
 }
 #pagination .page-number.current {
-  background: #00c4b6;
+  background: #5a5ab7;
   color: var(--white);
 }
 #pagination .full-width {
@@ -4724,7 +4724,7 @@ figure.highlight pre .javascript .function {
 #waline-wrap {
   --waline-font-size: 1.1em;
   --waline-theme-color: #5a5ab7;
-  --waline-active-color: #35356b;
+  --waline-active-color: #4c4c9a;
 }
 #waline-wrap .wl-comment-actions > button:not(last-child) {
   padding-right: 4px;
