@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.raylon.dev/assets/profile.png">
 <meta property="article:published_time" content="2025-07-09T12:10:07.000Z">
-<meta property="article:modified_time" content="2025-08-04T10:24:20.428Z">
+<meta property="article:modified_time" content="2025-08-04T10:32:13.795Z">
 <meta property="article:author" content="RayLon">
 <meta property="article:tag" content="龍龍">
 <meta property="article:tag" content="部落格">
@@ -23,7 +23,7 @@
   "url": "https://blog.raylon.dev/2025/07/09/fbs-share/",
   "image": "https://blog.raylon.dev/assets/profile.png",
   "datePublished": "2025-07-09T12:10:07.000Z",
-  "dateModified": "2025-08-04T10:24:20.428Z",
+  "dateModified": "2025-08-04T10:32:13.795Z",
   "author": [
     {
       "@type": "Person",
@@ -172,11 +172,11 @@ btf.addGlobalFn('pjaxSend', () => {
   Pace.restart()
 }, 'pace_restart')
 
-</script><link rel="stylesheet" href="/style/loading-bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg" style="background-color: #f6f5ff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/assets/profile.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章列表</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/assets/background.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">龍の部落格</span></a><a class="nav-page-title" href="/"><span class="site-name">filebrowser + nginx 建立自定義網域下載</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首頁</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章列表</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">filebrowser + nginx 建立自定義網域下載</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2025-07-09T12:10:07.000Z" title="發表於 2025-07-09 20:10:07">2025-07-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2025-08-04T10:24:20.428Z" title="更新於 2025-08-04 18:24:20">2025-08-04</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="動機">動機</h2>
+</script><link rel="stylesheet" href="/style/loading-bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg" style="background-color: #f6f5ff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/assets/profile.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章列表</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/assets/background.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">龍の部落格</span></a><a class="nav-page-title" href="/"><span class="site-name">filebrowser + nginx 建立自定義網域下載</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首頁</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章列表</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">filebrowser + nginx 建立自定義網域下載</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2025-07-09T12:10:07.000Z" title="發表於 2025-07-09 20:10:07">2025-07-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2025-08-04T10:32:13.795Z" title="更新於 2025-08-04 18:32:13">2025-08-04</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="動機">動機</h2>
 <p>因為系上的實驗室內部有架設 filebrowser 提供檔案傳輸的服務，但最近遇到一個問題，在下載檔案時 filebrowser 會透過 JSON Web Token (JWT) 來驗證使用者，憑證輸入後會導致網址變得非常難看。因為常常會使用 wget 來下載檔案，不想要輸入又臭又長的網址，因此想出了一個方法解決了網址超長且意義不明確的問題。</p>
 <ul>
-<li><strong>因為輸入 token 導致網址超長</strong><br>
-<img src="../assets/post_image/Pasted%20image%2020250715214725.png" alt="long token"></li>
+<li><strong>因為輸入 token 導致網址超長</strong><img src="/2025/07/09/fbs-share/image.png" class="" title="long token">
+</li>
 </ul>
 <h2 id="方法">方法</h2>
 <p>透過 filebrowser 的邀請碼的方式來讓使用者下載檔案時不需要輸入 token，這樣也就意味著網址不會又臭又長的，而且可以搭配 Nginx 反向代理來進行訪問限制與轉發，使用自定義網域來指向邀請碼所提供的分享連結進行檔案下載。</p>
@@ -184,8 +184,8 @@ btf.addGlobalFn('pjaxSend', () => {
 <h3 id="第一步">第一步</h3>
 <p>打開 filebrowser ，創建一個主資料夾，用來存放 filebrowser 裡的檔案，然後為它創建一個邀請碼，時間可以設訂 999 小時(含以上)，確保連結不會在短期失效。</p>
 <ul>
-<li><strong>邀請碼創建完畢</strong><br>
-<img src="../assets/post_image/Pasted%20image%2020250709214512.png" alt="share code"></li>
+<li><strong>邀請碼創建完畢</strong><img src="/2025/07/09/fbs-share/image-1.png" class="" title="share code">
+</li>
 </ul>
 <h3 id="第二步">第二步</h3>
 <p>創建完邀請碼後，透過邀請碼旁邊的複製按鈕，來取得分享連結。</p>
@@ -203,10 +203,9 @@ btf.addGlobalFn('pjaxSend', () => {
 <p>使用 filebrowser 一段時間了，只知道可以透過邀請碼來下載檔案，事發後突然想到邀請碼不需要輸入 token 就能夠下載檔案，而且連結可以保留很長一段時間，因此我開始嘗試使用邀請碼來固定下載連結，後來又發現使用的連結有特定的格式關係，這讓我想到可以搭配 Nginx 來將我的網域導到這個特定的連結，因此就發現了這個方法解決了網址超長的問題之外，又能夠讓下載連結變得有意義、淺顯易懂。</p>
 <blockquote>
 <ul>
-<li>主資料夾分享的下載連結<br>
-<img src="../assets/post_image/Pasted%20image%2020250715222840.png" alt="share1"></li>
-<li>主資料夾底下檔案的下載連結<br>
-<img src="../assets/post_image/Pasted%20image%2020250715223026.png" alt="share2"><br>
+<li>主資料夾分享的下載連結<img src="/2025/07/09/fbs-share/image-2.png" class="" title="share1">
+</li>
+<li>主資料夾底下檔案的下載連結<img src="/2025/07/09/fbs-share/image-3.png" class="" title="share2">
 可以發現以 dl 後為主資料夾的邀請碼，之後裡面的每個資料夾或檔案都是以自己命名的名稱做區分，因此可以很好理解每個檔案的意義，透過 nginx 後，在輸入網址下載時可以只輸入邀請碼後面的部份，而不需要輸入前面重複的網址區塊。</li>
 </ul>
 </blockquote>
