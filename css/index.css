@@ -1375,11 +1375,6 @@ body {
   line-height: 2;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   scroll-behavior: smooth;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
 }
 @-moz-document url-prefix() {
   * {
@@ -1475,7 +1470,7 @@ table td {
   vertical-align: middle;
 }
 *::selection {
-  background: #00c4b6;
+  background: #5a5ab7;
   color: #f7f7f7;
 }
 button {
