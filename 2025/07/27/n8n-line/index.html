@@ -1,0 +1,389 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>使用 n8n 建立 LINE 個人助理 | 龍の部落格</title><meta name="author" content="RayLon"><meta name="copyright" content="RayLon"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="f0f0f0"><meta name="description" content="一起來探索新事物吧!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 n8n 建立 LINE 個人助理">
+<meta property="og:url" content="https://blog.raylon.dev/2025/07/27/n8n-line/index.html">
+<meta property="og:site_name" content="龍の部落格">
+<meta property="og:description" content="一起來探索新事物吧!">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://blog.raylon.dev/assets/profile.png">
+<meta property="article:published_time" content="2025-07-27T03:53:11.000Z">
+<meta property="article:modified_time" content="2025-08-04T10:00:38.940Z">
+<meta property="article:author" content="RayLon">
+<meta property="article:tag" content="龍龍">
+<meta property="article:tag" content="部落格">
+<meta property="article:tag" content="技術教學">
+<meta property="article:tag" content="開發">
+<meta property="article:tag" content="程式設計">
+<meta property="article:tag" content="AIoT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.raylon.dev/assets/profile.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "使用 n8n 建立 LINE 個人助理",
+  "url": "https://blog.raylon.dev/2025/07/27/n8n-line/",
+  "image": "https://blog.raylon.dev/assets/profile.png",
+  "datePublished": "2025-07-27T03:53:11.000Z",
+  "dateModified": "2025-08-04T10:00:38.940Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "RayLon",
+      "url": "https://blog.raylon.dev"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/favicon/title_icon.png"><link rel="canonical" href="https://blog.raylon.dev/2025/07/27/n8n-line/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'f0f0f0')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":5,"unescape":false,"languages":{"hits_empty":"找不到符合您查詢的內容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '複製成功',
+    error: '複製失敗',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切換為繁體中文","cht_to_chs":"已切換為簡體中文","day_to_night":"已切換為深色模式","night_to_day":"已切換為淺色模式","bgLight":"#5a5ab7","bgDark":"#1f1f1f","position":"bottom-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '使用 n8n 建立 LINE 個人助理',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="/style/loading-bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg" style="background-color: #f6f5ff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/assets/profile.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章列表</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/assets/background.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">龍の部落格</span></a><a class="nav-page-title" href="/"><span class="site-name">使用 n8n 建立 LINE 個人助理</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首頁</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章列表</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">使用 n8n 建立 LINE 個人助理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2025-07-27T03:53:11.000Z" title="發表於 2025-07-27 11:53:11">2025-07-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2025-08-04T10:00:38.940Z" title="更新於 2025-08-04 18:00:38">2025-08-04</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="動機">動機</h2>
+<p>想要練習看看使用非常方便的 n8n 來建立屬於自己的 LINE 個人助理。</p>
+<h2 id="解決方法">解決方法</h2>
+<p>透過 ngrok 反向代理，將本機的 n8n 服務公開到網路上，然後在 n8n 上透過 Webhook 接收 LINE 訊息，並搭配 AI Agent 來控制 Google 行事曆。</p>
+<h2 id="實作">實作</h2>
+<h3 id="建立-ngrok">建立 ngrok</h3>
+<p>到 <a target="_blank" rel="noopener" href="https://ngrok.com/">https://ngrok.com/</a> 註冊一個帳戶，登入後可以看到右邊有很多啟動方式。<br>
+我們選擇使用 docker 來啟動。<br>
+<img src="image.png" alt="ngrok"></p>
+<p>使用下方的指令進行啟動。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --net=host -it -e NGROK_AUTHTOKEN=&lt;你的金鑰&gt; ngrok/ngrok:latest http &lt;n8n 的埠號&gt;</span><br></pre></td></tr></table></figure>
+<p>看到這個畫面代表啟動成功。<br>
+<img src="image-1.png" alt="ngrok 部署成功"></p>
+<h3 id="創建-Webhook">創建 Webhook</h3>
+<p>剛開始先創建一個 Webhook 來接收訊號，這個 Webhook 會被網址使用 post 觸發。<br>
+<img src="image-2.png" alt="alt text"></p>
+<h3 id="連接-LINE-BOT">連接 LINE BOT</h3>
+<p>把 Webhook 的 URL 複製到 LINE BOT 的 Webhook URL 裡。<br>
+<img src="image-3.png" alt="alt text"></p>
+<blockquote>
+<p>注意紅色框框要改成 ngrok 提供的網址。</p>
+</blockquote>
+<p>接下來到 Response settings 把 Webhooks 打開。<br>
+<img src="image-4.png" alt="alt text"></p>
+<h3 id="測試連線">測試連線</h3>
+<p>點選 <code>Listen for test event</code> 進行測試。<br>
+<img src="image-5.png" alt="alt text"></p>
+<p>在 <a target="_blank" rel="noopener" href="https://developers.line.biz/console">https://developers.line.biz/console</a> 找到自己的機器人，並進入到 Messaging API 後，可以點選 <code>Verify</code> 進行測試。<br>
+<img src="image-6.png" alt="alt text"></p>
+<p>出現 Success 後，就可以在 Output 上看到回傳的結果。<br>
+<img src="image-7.png" alt="alt text"></p>
+<h3 id="建立一個表單">建立一個表單</h3>
+<p>建立一個 <code>Edit Fields</code> 節點，把輸入資訊整理成一個表單。<br>
+<img src="image-8.png" alt="alt text"></p>
+<h3 id="建立一個-AI-Agent">建立一個 AI Agent</h3>
+<p>建立一個 AI Agent 後，我們可以看到它需要有三個元件，分別是:「模型」、「資料庫」、「工具」。<br>
+<img src="image-9.png" alt="alt text"><br>
+模型的部分選擇免費的 Google Gemini。<br>
+<img src="image-10.png" alt="alt text"><br>
+資料庫的部份選擇一般即可。<br>
+<img src="image-11.png" alt="alt text"><br>
+工具的部份可以依照自己的需求自行添加，稍後會添加。</p>
+<h3 id="輸入模型-API">輸入模型 API</h3>
+<p>點擊模型可以進入到此頁面，要先創建憑證，創建時會需要輸入 API key，輸入完後儲存，並選擇要使用的模型版本。<br>
+<img src="image-12.png" alt="alt text"></p>
+<h3 id="測試模型運作">測試模型運作</h3>
+<p>我們在 LINE 上輸入&quot;你好&quot;後，模型成功回覆，代表模型正常運作。<br>
+<img src="image-13.png" alt="alt text"></p>
+<h3 id="GCP-憑證">GCP 憑證</h3>
+<p>因為我們等等會使用到 google 日曆，因此我們需要申請一個使用者憑證才能做使用。<br>
+首先要到 <a target="_blank" rel="noopener" href="https://console.cloud.google.com/">https://console.cloud.google.com/</a> ，進來後先創建一個專案，創建完後會看到這個頁面。<br>
+<img src="image-14.png" alt="alt text"></p>
+<p>我們點選 API 和服務，後搜尋 Google Calendar API 進行安裝，我們等等會需要用到。<br>
+<img src="image-15.png" alt="alt text"></p>
+<p>接著回到「API 和服務」頁面，點選憑證，然後創建一個 OAuth 用戶端 ID。<br>
+應用程式類型選擇「網頁應用程式」，名稱可以自定義。<br>
+<img src="image-16.png" alt="alt text"></p>
+<p>接下來按建立，建立完畢後會出現 Client ID 和 Client Secret，這兩個要保存好，等等會用到。</p>
+<h3 id="新增一個日曆">新增一個日曆</h3>
+<p>在 Google 日曆中新增一個日曆。<br>
+<img src="image-17.png" alt="alt text"></p>
+<h3 id="串接實用工具">串接實用工具</h3>
+<p>我們使用 Google Calendar 作為範例，讓 AI 能夠幫我們新增行事曆排程。<br>
+<img src="image-18.png" alt="alt text"></p>
+<p>新增完節點後，我們要輸入憑證，會看到這個畫面。<br>
+要把 OAuth Redirect URL 複製到剛剛在 GCP 建立的憑證上 (已授權的重新導向 URI)，然後儲存。<br>
+再把 Client ID 和 Client Secret 輸入進 n8n，再點擊 Sign in with Google 進行驗證。<br>
+<img src="image-19.png" alt="alt text"><br>
+<img src="image-20.png" alt="alt text"></p>
+<p>紅色框的部分，要改為目標日曆，開始與結束日期由 AI 自動輸入。<br>
+(紅框上的部分，可以依照自己的需求進行設定)<br>
+<img src="image-21.png" alt="alt text"><br>
+<img src="image-22.png" alt="alt text"></p>
+<h3 id="新增當前時間">新增當前時間</h3>
+<p>因為日曆排程需要日期與時間，因此我們要在 AI Agent 節點前新增一個 Date &amp; Time 節點，讓 AI 知道當前時間。<br>
+紅框內的選項記得要打開，這樣才能引用之前的輸入。<br>
+<img src="image-23.png" alt="alt text"></p>
+<h3 id="優化模型">優化模型</h3>
+<p>在 Option 選項裡新增 System Message 後，可以看到預設的 prompt 是告訴 AI「你是一個有用的助理」，我們可以透過下 prompt 來優化 AI，讓 AI 能夠更清楚的知道它要做什麼。<br>
+<img src="image-24.png" alt="alt text"></p>
+<p>因此，我提供一個 prompt 給大家做參考。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">你是一位個人助理，你的職責是協助使用者處理日常事務，你可以使用以下工具來完成任務:</span><br><span class="line">- Google Calendar: 用於建立行事曆事件，當使用者需要安排行程或建立提醒時，請使用此工具，事件的摘要(Summary)是必填欄位。</span><br><span class="line"></span><br><span class="line">目前時間為: &#123;&#123; $json.currentDate &#125;&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>要記得改為 Expression 輸入模式</p>
+</blockquote>
+<p>這樣就完成了 AI 助理的建置，還有很多方便的工具可以依照需求自行新增。</p>
+<h3 id="建立機器人回覆節點">建立機器人回覆節點</h3>
+<p>建立一個 HTTP Request 節點，打一個 API 來回覆使用者。<br>
+使用 POST 模式，URL 為 <code>https://api.line.me/v2/bot/message/reply</code>，Authentication 要選擇 <code>Generic Credential Type</code>，然後選擇 <code>Header Auth</code>。<br>
+<img src="image-25.png" alt="alt text"></p>
+<p>創建一個 <code>Header Auth</code>，名稱為 <code>Authorization</code>，值要輸入 <code>Bearer &lt;access token&gt;</code>。<br>
+<img src="image-26.png" alt="alt text"></p>
+<p>打開 <code>Send Body</code> 選項，使用 Json 格式，並輸入以下 Json 內容。<br>
+<img src="image-27.png" alt="alt text"></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;replyToken&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;&#123; $(&#x27;Edit Fields&#x27;).first().json.replyToken &#125;&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;messages&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;text&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;&#123; $json.output &#125;&#125;&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="測試回覆">測試回覆</h3>
+<p>使用 LINE 和 Bot 進行對話，最後 Bot 有成功回覆訊息。<br>
+<img src="image-28.png" alt="alt text"></p>
+<h3 id="正式開放-Webhook">正式開放 Webhook</h3>
+<p>啟動我們的 Workflow。<br>
+<img src="image-29.png" alt="alt text"></p>
+<p>最後，只需要把我們 Webhook 節點的 <code>Test URL</code> 改為 <code>Production URL</code>，這樣就能夠一直監聽。<br>
+<img src="image-30.png" alt="alt text"></p>
+<blockquote>
+<p>也要記得把 LINE Bot 的 Webhook 替換成 Production URL 喔</p>
+</blockquote>
+<h2 id="如何使用">如何使用</h2>
+<p>建置完畢後，我們就能夠在 LINE 上輸入需求，讓個人助理幫你完成事務。<br>
+<img src="image-31.png" alt="alt text"><br>
+<img src="image-32.png" alt="alt text"></p>
+<h2 id="總結">總結</h2>
+<p>n8n 是一個非常好用的自動化工作流平台，使用者不需要寫大量的 Code，只需要透過建立節點來打造出自己的工作流程，節省大量的開發時間，重點它是免費開源的!!!</p>
+<h2 id="參考文獻">參考文獻</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://ngrok.com/">https://ngrok.com/</a></li>
+<li><a target="_blank" rel="noopener" href="https://n8n.io/">https://n8n.io/</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.line.biz/">https://developers.line.biz/</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog.raylon.dev">RayLon</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章連結: </span><span class="post-copyright-info"><a href="https://blog.raylon.dev/2025/07/27/n8n-line/">https://blog.raylon.dev/2025/07/27/n8n-line/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 授權協議。轉載請註明來源 <a href="https://blog.raylon.dev" target="_blank">龍の部落格</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="addtoany"><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_button_email"></a><a class="a2a_button_copy_link"></a><a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a></div></div><script async="async" src="https://static.addtoany.com/menu/page.js"></script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/assets/profile.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">RayLon</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RayLonscholar"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">尚無公告</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8B%95%E6%A9%9F"><span class="toc-number">1.</span> <span class="toc-text">動機</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">解決方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">實作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B-ngrok"><span class="toc-number">3.1.</span> <span class="toc-text">建立 ngrok</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%B5%E5%BB%BA-Webhook"><span class="toc-number">3.2.</span> <span class="toc-text">創建 Webhook</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%A3%E6%8E%A5-LINE-BOT"><span class="toc-number">3.3.</span> <span class="toc-text">連接 LINE BOT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%AC%E8%A9%A6%E9%80%A3%E7%B7%9A"><span class="toc-number">3.4.</span> <span class="toc-text">測試連線</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B%E8%A1%A8%E5%96%AE"><span class="toc-number">3.5.</span> <span class="toc-text">建立一個表單</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B-AI-Agent"><span class="toc-number">3.6.</span> <span class="toc-text">建立一個 AI Agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BC%B8%E5%85%A5%E6%A8%A1%E5%9E%8B-API"><span class="toc-number">3.7.</span> <span class="toc-text">輸入模型 API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%AC%E8%A9%A6%E6%A8%A1%E5%9E%8B%E9%81%8B%E4%BD%9C"><span class="toc-number">3.8.</span> <span class="toc-text">測試模型運作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GCP-%E6%86%91%E8%AD%89"><span class="toc-number">3.9.</span> <span class="toc-text">GCP 憑證</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E4%B8%80%E5%80%8B%E6%97%A5%E6%9B%86"><span class="toc-number">3.10.</span> <span class="toc-text">新增一個日曆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B2%E6%8E%A5%E5%AF%A6%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="toc-number">3.11.</span> <span class="toc-text">串接實用工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E7%95%B6%E5%89%8D%E6%99%82%E9%96%93"><span class="toc-number">3.12.</span> <span class="toc-text">新增當前時間</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%84%AA%E5%8C%96%E6%A8%A1%E5%9E%8B"><span class="toc-number">3.13.</span> <span class="toc-text">優化模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E5%9B%9E%E8%A6%86%E7%AF%80%E9%BB%9E"><span class="toc-number">3.14.</span> <span class="toc-text">建立機器人回覆節點</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%AC%E8%A9%A6%E5%9B%9E%E8%A6%86"><span class="toc-number">3.15.</span> <span class="toc-text">測試回覆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%BC%8F%E9%96%8B%E6%94%BE-Webhook"><span class="toc-number">3.16.</span> <span class="toc-text">正式開放 Webhook</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">如何使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B8%BD%E7%B5%90"><span class="toc-number">5.</span> <span class="toc-text">總結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E6%96%87%E7%8D%BB"><span class="toc-number">6.</span> <span class="toc-text">參考文獻</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/27/n8n-line/" title="使用 n8n 建立 LINE 個人助理">使用 n8n 建立 LINE 個人助理</a><time datetime="2025-07-27T03:53:11.000Z" title="發表於 2025-07-27 11:53:11">2025-07-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/09/fbs-share/" title="filebrowser + nginx 建立自定義網域下載">filebrowser + nginx 建立自定義網域下載</a><time datetime="2025-07-09T12:10:07.000Z" title="發表於 2025-07-09 20:10:07">2025-07-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/28/filebrowser-service/" title="搭建屬於自己的檔案管理頁面">搭建屬於自己的檔案管理頁面</a><time datetime="2025-06-28T12:31:00.000Z" title="發表於 2025-06-28 20:31:00">2025-06-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/15/wsl-devcontainer-2/" title="使用 WSL + DevContainer 進行程式開發(二)">使用 WSL + DevContainer 進行程式開發(二)</a><time datetime="2025-06-15T08:12:21.000Z" title="發表於 2025-06-15 16:12:21">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/13/wsl-devcontainer-1/" title="使用 WSL + DevContainer 進行程式開發(一)">使用 WSL + DevContainer 進行程式開發(一)</a><time datetime="2025-06-13T02:35:35.000Z" title="發表於 2025-06-13 10:35:35">2025-06-13</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2024 - 2025 By RayLon</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日夜模式切換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂端"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜尋</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  資料載入中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜尋文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
