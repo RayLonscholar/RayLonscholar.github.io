@@ -1,0 +1,342 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Java 基礎(一) | 龍の部落格</title><meta name="author" content="RayLon"><meta name="copyright" content="RayLon"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="f0f0f0"><meta name="description" content="一起來探索新事物吧!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 基礎(一)">
+<meta property="og:url" content="https://blog.raylon.dev/2025/09/06/java-1/index.html">
+<meta property="og:site_name" content="龍の部落格">
+<meta property="og:description" content="一起來探索新事物吧!">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://blog.raylon.dev/assets/profile.png">
+<meta property="article:published_time" content="2025-09-06T06:26:49.000Z">
+<meta property="article:modified_time" content="2025-09-07T15:29:22.257Z">
+<meta property="article:author" content="RayLon">
+<meta property="article:tag" content="龍龍">
+<meta property="article:tag" content="部落格">
+<meta property="article:tag" content="技術教學">
+<meta property="article:tag" content="開發">
+<meta property="article:tag" content="程式設計">
+<meta property="article:tag" content="AIoT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.raylon.dev/assets/profile.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Java 基礎(一)",
+  "url": "https://blog.raylon.dev/2025/09/06/java-1/",
+  "image": "https://blog.raylon.dev/assets/profile.png",
+  "datePublished": "2025-09-06T06:26:49.000Z",
+  "dateModified": "2025-09-07T15:29:22.257Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "RayLon",
+      "url": "https://blog.raylon.dev"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/favicon/title_icon.png"><link rel="canonical" href="https://blog.raylon.dev/2025/09/06/java-1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'f0f0f0')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":5,"unescape":false,"languages":{"hits_empty":"找不到符合您查詢的內容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '複製成功',
+    error: '複製失敗',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: {"limitCount":20,"languages":{"author":"作者: RayLon","link":"連結: ","source":"來源: 龍の部落格","info":"著作權歸作者所有。如需商業轉載，請聯絡作者獲得授權，非商業轉載請註明出處。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切換為繁體中文","cht_to_chs":"已切換為簡體中文","day_to_night":"已切換為深色模式","night_to_day":"已切換為淺色模式","bgLight":"#5a5ab7","bgDark":"#1f1f1f","position":"bottom-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java 基礎(一)',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="/style/loading-bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg" style="background-color: #f6f5ff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/assets/profile.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章列表</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/assets/background.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">龍の部落格</span></a><a class="nav-page-title" href="/"><span class="site-name">Java 基礎(一)</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首頁</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章列表</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Java 基礎(一)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2025-09-06T06:26:49.000Z" title="發表於 2025-09-06 14:26:49">2025-09-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2025-09-07T15:29:22.257Z" title="更新於 2025-09-07 23:29:22">2025-09-07</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="認識-Java">認識 Java</h2>
+<h3 id="起源">起源</h3>
+<p>最初是由 Unix 作業系統下的伺服器廠商，<strong>昇陽</strong>公司所研發的一套<strong>跨平台物件導向程式語言</strong>。<br>
+是<strong>以 C++ 為基礎架構</strong>，更改了許多 C++ 的複雜之處，最終命名為我們熟悉的 Java。</p>
+<blockquote>
+<p>後來被甲骨文公司 (Oracle) 併購。</p>
+</blockquote>
+<h3 id="目的">目的</h3>
+<ul>
+<li>以物件導向為原則的設計模式。</li>
+<li>允許同個程式在不同作業系統上執行。</li>
+<li>內建對電腦網路的支援。</li>
+<li>改善 C++ 的複雜之處，使其容易使用。</li>
+</ul>
+<h3 id="特性">特性</h3>
+<p>跨平台的特性，<strong>強調「一次編寫，到處執行」</strong>，使用 Java 編寫的程式可以在編譯後不用經過任何更改，就能在任何裝置上運行。</p>
+<p>Java 語言與其他程式語言不同的地方在於，編譯 (Compile) 後產生的結果二元碼，不能直接在作業系統上運行，必須透過 Java Virtual Machine (JVM) 轉換成該系統能夠處理的目的碼後才能運行。</p>
+<img src="/2025/09/06/java-1/image.png" class="">
+<h3 id="執行環境">執行環境</h3>
+<p>Java 的運行環境是透過下列元件組成:</p>
+<h4 id="Java-Runtime-Environment-JRE">Java Runtime Environment (JRE)</h4>
+<p><strong>提供作業系統在執行 Java 應用程式所需</strong>的軟體。</p>
+<h4 id="Java-Virtual-Machine-JVM">Java Virtual Machine (JVM)</h4>
+<p>用來<strong>將二元碼 (ByteCode) 轉換成系統看得懂的目的碼</strong>的軟體。</p>
+<h4 id="Java-Development-Kit-JDK">Java Development Kit (JDK)</h4>
+<p>Java 開發套件 (JDK)，原本名為 Software Development Kit (SDK)，可以理解成是裡面有所需開發工具的套件包。</p>
+<blockquote>
+<p>常見的，像是 OpenJDK 21 則表示使用 Java SE 21。</p>
+</blockquote>
+<h2 id="建置開發環境">建置開發環境</h2>
+<h3 id="事前準備">事前準備</h3>
+<ol>
+<li>安裝 Docker | <a target="_blank" rel="noopener" href="https://www.docker.com/">Docker: Accelerated Container Application Development</a></li>
+<li>使用 VSCode + WSL</li>
+<li>安裝 Dev Container 擴充套件 | <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Dev Containers - Visual Studio Marketplace</a></li>
+</ol>
+<h3 id="環境套件工具">環境套件工具</h3>
+<ul>
+<li><strong>Java</strong>: OpenJDK 17</li>
+<li><strong>Maven</strong>: 3.9.x or high</li>
+</ul>
+<h3 id="新增開發用資料夾">新增開發用資料夾</h3>
+<p>在 WSL 環境裡新增一個資料夾並進入 VSCode IDE</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> JavaEdu &amp;&amp; <span class="built_in">cd</span> JavaEdu</span><br><span class="line">code .</span><br></pre></td></tr></table></figure>
+<h3 id="新增-Dev-Container-設定檔">新增 Dev Container 設定檔</h3>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// For format details, see https://aka.ms/devcontainer.json. For config options, see the</span></span><br><span class="line"><span class="comment">// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Java OpenJDK-17 Devcontainer (Ubuntu)&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="comment">// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile</span></span><br><span class="line">  <span class="attr">&quot;image&quot;</span><span class="punctuation">:</span> <span class="string">&quot;mcr.microsoft.com/devcontainers/base:jammy&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="comment">// Features to add to the dev container. More info: https://containers.dev/features.</span></span><br><span class="line">  <span class="attr">&quot;features&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;ghcr.io/devcontainers/features/node:1&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;ghcr.io/devcontainers/features/java:1&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;17&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;installMaven&quot;</span><span class="punctuation">:</span> <span class="string">&quot;true&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;installGradle&quot;</span><span class="punctuation">:</span> <span class="string">&quot;false&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;workspaceFolder&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/workspace&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;customizations&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;vscode&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;extensions&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;vscjava.vscode-java-pack&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;vscjava.vscode-spring-initializr&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;vmware.vscode-spring-boot&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;vscjava.vscode-spring-boot-dashboard&quot;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="comment">// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.</span></span><br><span class="line">  <span class="attr">&quot;remoteUser&quot;</span><span class="punctuation">:</span> <span class="string">&quot;root&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果還不知道 DevContainer 是什麼東西的話，可以先看 <a href="https://blog.raylon.dev/2025/06/13/wsl-devcontainer-1">使用 WSL + DevContainer 進行程式開發</a>。</p>
+</blockquote>
+<h3 id="檢查-JDK-Maven-版本">檢查 JDK &amp; Maven 版本</h3>
+<p>檢查開發環境是否成功安裝 Java 與 Maven。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line">mvn -v</span><br></pre></td></tr></table></figure>
+<h3 id="認識-Maven">認識 Maven</h3>
+<p>Maven 是 Apache 旗下的產品，用來管理套件與自動化建構專案，透過 <code>pom.xml</code> 來管理專案。可以把它作為是整個專案的核心。</p>
+<blockquote>
+<p>Maven 提供了標準的建構流程，包含測試、打包、部署等功能。</p>
+</blockquote>
+<h3 id="創建第一個專案">創建第一個專案</h3>
+<h4 id="使用-Maven-創建第一個專案">使用 Maven 創建第一個專案</h4>
+<p>在 VSCode 中執行 <code>Ctrl + Shift + P</code> 輸入 <code>maven new project</code></p>
+<h4 id="選擇範本">選擇範本</h4>
+<p>剛開始練習，所以選擇 <code>No Archetype</code> 的基本專案就好。</p>
+<img src="/2025/09/06/java-1/image-1.png" class="">
+<h4 id="Group-ID">Group ID</h4>
+<p>通常設定為組織的反向域名。</p>
+<img src="/2025/09/06/java-1/image-2.png" class="">
+<h4 id="設定-Project-Name">設定 Project Name</h4>
+<img src="/2025/09/06/java-1/image-3.png" class="">
+<h4 id="認識專案結構">認識專案結構</h4>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">├── pom.xml                        <span class="comment"># Maven 專案的核心設定檔</span></span><br><span class="line">├── src<span class="symbol">/</span>                           <span class="comment"># 程式碼區塊</span></span><br><span class="line">│   ├── main<span class="symbol">/</span>                      <span class="comment"># 主區塊</span></span><br><span class="line">│   │   ├── java<span class="symbol">/</span>                  <span class="comment"># Java 原始程式碼檔案</span></span><br><span class="line">│   │   │   └── com<span class="symbol">/</span>               <span class="comment"># 域名結構</span></span><br><span class="line">│   │   │       └── raylon<span class="symbol">/</span>        <span class="comment"># 域名結構</span></span><br><span class="line">│   │   │           └── Main.java  <span class="comment"># 主程式</span></span><br><span class="line">│   │   └── resources<span class="symbol">/</span>             <span class="comment"># 資源檔案</span></span><br><span class="line">│   └── test<span class="symbol">/</span>                      <span class="comment"># 測試區塊</span></span><br><span class="line">│       └── java<span class="symbol">/</span>                  <span class="comment"># 存放單元測試和整合測試</span></span><br><span class="line">└── target<span class="symbol">/</span>                        <span class="comment"># ByteCode</span></span><br><span class="line">    ├── classes<span class="symbol">/</span>                   <span class="comment"># 存放編譯後的主程式 .class 檔</span></span><br><span class="line">    │   └── com<span class="symbol">/</span></span><br><span class="line">    │       └── raylon<span class="symbol">/</span></span><br><span class="line">    │           └── Main.class</span><br><span class="line">    └── test-classes<span class="symbol">/</span>              <span class="comment"># 存放編譯後的測試 .class 檔</span></span><br></pre></td></tr></table></figure>
+<p>這樣就創好專案了~ 接下來就是 Java 的基本語法介紹!!</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog.raylon.dev">RayLon</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章連結: </span><span class="post-copyright-info"><a href="https://blog.raylon.dev/2025/09/06/java-1/">https://blog.raylon.dev/2025/09/06/java-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 授權協議。轉載請註明來源 <a href="https://blog.raylon.dev" target="_blank">龍の部落格</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="addtoany"><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_button_email"></a><a class="a2a_button_copy_link"></a><a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a></div></div><script async="async" src="https://static.addtoany.com/menu/page.js"></script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/assets/profile.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">RayLon</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RayLonscholar"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">尚無公告</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AA%8D%E8%AD%98-Java"><span class="toc-number">1.</span> <span class="toc-text">認識 Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%B7%E6%BA%90"><span class="toc-number">1.1.</span> <span class="toc-text">起源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E7%9A%84"><span class="toc-number">1.2.</span> <span class="toc-text">目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83"><span class="toc-number">1.4.</span> <span class="toc-text">執行環境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Java-Runtime-Environment-JRE"><span class="toc-number">1.4.1.</span> <span class="toc-text">Java Runtime Environment (JRE)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java-Virtual-Machine-JVM"><span class="toc-number">1.4.2.</span> <span class="toc-text">Java Virtual Machine (JVM)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java-Development-Kit-JDK"><span class="toc-number">1.4.3.</span> <span class="toc-text">Java Development Kit (JDK)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E7%BD%AE%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83"><span class="toc-number">2.</span> <span class="toc-text">建置開發環境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%89%8D%E6%BA%96%E5%82%99"><span class="toc-number">2.1.</span> <span class="toc-text">事前準備</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%92%B0%E5%A2%83%E5%A5%97%E4%BB%B6%E5%B7%A5%E5%85%B7"><span class="toc-number">2.2.</span> <span class="toc-text">環境套件工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E9%96%8B%E7%99%BC%E7%94%A8%E8%B3%87%E6%96%99%E5%A4%BE"><span class="toc-number">2.3.</span> <span class="toc-text">新增開發用資料夾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E-Dev-Container-%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="toc-number">2.4.</span> <span class="toc-text">新增 Dev Container 設定檔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AA%A2%E6%9F%A5-JDK-Maven-%E7%89%88%E6%9C%AC"><span class="toc-number">2.5.</span> <span class="toc-text">檢查 JDK &amp; Maven 版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AA%8D%E8%AD%98-Maven"><span class="toc-number">2.6.</span> <span class="toc-text">認識 Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%B5%E5%BB%BA%E7%AC%AC%E4%B8%80%E5%80%8B%E5%B0%88%E6%A1%88"><span class="toc-number">2.7.</span> <span class="toc-text">創建第一個專案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Maven-%E5%89%B5%E5%BB%BA%E7%AC%AC%E4%B8%80%E5%80%8B%E5%B0%88%E6%A1%88"><span class="toc-number">2.7.1.</span> <span class="toc-text">使用 Maven 創建第一個專案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%B8%E6%93%87%E7%AF%84%E6%9C%AC"><span class="toc-number">2.7.2.</span> <span class="toc-text">選擇範本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Group-ID"><span class="toc-number">2.7.3.</span> <span class="toc-text">Group ID</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A-Project-Name"><span class="toc-number">2.7.4.</span> <span class="toc-text">設定 Project Name</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AA%8D%E8%AD%98%E5%B0%88%E6%A1%88%E7%B5%90%E6%A7%8B"><span class="toc-number">2.7.5.</span> <span class="toc-text">認識專案結構</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/06/java-1/" title="Java 基礎(一)">Java 基礎(一)</a><time datetime="2025-09-06T06:26:49.000Z" title="發表於 2025-09-06 14:26:49">2025-09-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/27/n8n-line/" title="使用 n8n 建立 LINE 個人助理">使用 n8n 建立 LINE 個人助理</a><time datetime="2025-07-27T03:53:11.000Z" title="發表於 2025-07-27 11:53:11">2025-07-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/09/fbs-share/" title="filebrowser + nginx 建立自定義網域下載">filebrowser + nginx 建立自定義網域下載</a><time datetime="2025-07-09T12:10:07.000Z" title="發表於 2025-07-09 20:10:07">2025-07-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/28/filebrowser-service/" title="搭建屬於自己的檔案管理頁面">搭建屬於自己的檔案管理頁面</a><time datetime="2025-06-28T12:31:00.000Z" title="發表於 2025-06-28 20:31:00">2025-06-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/15/wsl-devcontainer-2/" title="使用 WSL + DevContainer 進行程式開發(二)">使用 WSL + DevContainer 進行程式開發(二)</a><time datetime="2025-06-15T08:12:21.000Z" title="發表於 2025-06-15 16:12:21">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2024 - 2025 By RayLon</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日夜模式切換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂端"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜尋</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  資料載入中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜尋文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
