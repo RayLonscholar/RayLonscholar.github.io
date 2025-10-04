@@ -7,14 +7,14 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.raylon.dev/assets/profile.png">
 <meta property="article:published_time" content="2025-07-27T03:53:11.000Z">
-<meta property="article:modified_time" content="2025-09-15T11:54:43.589Z">
+<meta property="article:modified_time" content="2025-10-04T13:25:32.044Z">
 <meta property="article:author" content="RayLon">
-<meta property="article:tag" content="龍龍">
-<meta property="article:tag" content="部落格">
-<meta property="article:tag" content="技術教學">
-<meta property="article:tag" content="開發">
-<meta property="article:tag" content="程式設計">
 <meta property="article:tag" content="AIoT">
+<meta property="article:tag" content="技術教學">
+<meta property="article:tag" content="程式設計">
+<meta property="article:tag" content="部落格">
+<meta property="article:tag" content="開發">
+<meta property="article:tag" content="龍龍">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://blog.raylon.dev/assets/profile.png"><script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -23,7 +23,7 @@
   "url": "https://blog.raylon.dev/2025/07/27/n8n-line/",
   "image": "https://blog.raylon.dev/assets/profile.png",
   "datePublished": "2025-07-27T03:53:11.000Z",
-  "dateModified": "2025-09-15T11:54:43.589Z",
+  "dateModified": "2025-10-04T13:25:32.044Z",
   "author": [
     {
       "@type": "Person",
@@ -164,7 +164,7 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><script>window.paceOptions = {
+}</script><meta name="generator" content="Hexo 8.0.0"></head><body><script>window.paceOptions = {
   restartOnPushState: false
 }
 
@@ -172,7 +172,7 @@ btf.addGlobalFn('pjaxSend', () => {
   Pace.restart()
 }, 'pace_restart')
 
-</script><link rel="stylesheet" href="/style/loading-bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg" style="background-color: #f6f5ff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/assets/profile.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章列表</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/assets/background.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">龍の部落格</span></a><a class="nav-page-title" href="/"><span class="site-name">使用 n8n 建立 LINE 個人助理</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首頁</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章列表</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">使用 n8n 建立 LINE 個人助理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2025-07-27T03:53:11.000Z" title="發表於 2025-07-27 11:53:11">2025-07-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2025-09-15T11:54:43.589Z" title="更新於 2025-09-15 19:54:43">2025-09-15</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="動機">動機</h2>
+</script><link rel="stylesheet" href="/style/loading-bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg" style="background-color: #f6f5ff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/assets/profile.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章列表</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/assets/background.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">龍の部落格</span></a><a class="nav-page-title" href="/"><span class="site-name">使用 n8n 建立 LINE 個人助理</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首頁</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章列表</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">使用 n8n 建立 LINE 個人助理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2025-07-27T03:53:11.000Z" title="發表於 2025-07-27 11:53:11">2025-07-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2025-10-04T13:25:32.044Z" title="更新於 2025-10-04 21:25:32">2025-10-04</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="動機">動機</h2>
 <p>想要練習看看使用非常方便的 n8n 來建立屬於自己的 LINE 個人助理。</p>
 <h2 id="解決方法">解決方法</h2>
 <p>透過 ngrok 反向代理，將本機的 n8n 服務公開到網路上，然後在 n8n 上透過 Webhook 接收 LINE 訊息，並搭配 AI Agent 來控制 Google 行事曆。</p>
