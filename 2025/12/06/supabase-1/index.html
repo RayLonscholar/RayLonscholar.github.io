@@ -1,0 +1,382 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>本機自架 supabase | 龍の部落格</title><meta name="author" content="RayLon"><meta name="copyright" content="RayLon"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="f0f0f0"><meta name="description" content="一起來探索新事物吧!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="本機自架 supabase">
+<meta property="og:url" content="https://blog.raylon.dev/2025/12/06/supabase-1/index.html">
+<meta property="og:site_name" content="龍の部落格">
+<meta property="og:description" content="一起來探索新事物吧!">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://blog.raylon.dev/assets/profile.png">
+<meta property="article:published_time" content="2025-12-06T03:38:51.000Z">
+<meta property="article:modified_time" content="2025-12-07T13:55:12.708Z">
+<meta property="article:author" content="RayLon">
+<meta property="article:tag" content="AIoT">
+<meta property="article:tag" content="技術教學">
+<meta property="article:tag" content="程式設計">
+<meta property="article:tag" content="部落格">
+<meta property="article:tag" content="開發">
+<meta property="article:tag" content="龍龍">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.raylon.dev/assets/profile.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "本機自架 supabase",
+  "url": "https://blog.raylon.dev/2025/12/06/supabase-1/",
+  "image": "https://blog.raylon.dev/assets/profile.png",
+  "datePublished": "2025-12-06T03:38:51.000Z",
+  "dateModified": "2025-12-07T13:55:12.708Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "RayLon",
+      "url": "https://blog.raylon.dev"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/favicon/title_icon.png"><link rel="canonical" href="https://blog.raylon.dev/2025/12/06/supabase-1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'f0f0f0')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":5,"unescape":false,"languages":{"hits_empty":"找不到符合您查詢的內容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '複製成功',
+    error: '複製失敗',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切換為繁體中文","cht_to_chs":"已切換為簡體中文","day_to_night":"已切換為深色模式","night_to_day":"已切換為淺色模式","bgLight":"#5a5ab7","bgDark":"#1f1f1f","position":"bottom-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '本機自架 supabase',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.0.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="/style/loading-bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg" style="background-color: #f6f5ff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/assets/profile.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章列表</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/assets/background.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">龍の部落格</span></a><a class="nav-page-title" href="/"><span class="site-name">本機自架 supabase</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首頁</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章列表</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">本機自架 supabase</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2025-12-06T03:38:51.000Z" title="發表於 2025-12-06 11:38:51">2025-12-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2025-12-07T13:55:12.708Z" title="更新於 2025-12-07 21:55:12">2025-12-07</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="介紹">介紹</h2>
+<p><img src="logo.png" alt=""><a target="_blank" rel="noopener" href="https://supabase.com/_next/image?url=https%3A%2F%2Ffrontend-assets.supabase.com%2Fwww%2F22cfd2be145c%2F_next%2Fstatic%2Fmedia%2Flogo-preview.50e72501.jpg&amp;w=3840&amp;q=75">圖片來源</a><br>
+Supabase 是一個開源的後端即服務(BaaS)平台，有內建 PostgreSQL 資料庫，提供即時的 WebSocket 支持和完整的用戶身份認證系統，能夠透過網頁 dashboard 來操作與管理資料庫，並透過內建自動生成 CRUD API 來對資料庫進行操作。</p>
+<h2 id="Self-hosting-with-Docker">Self-hosting with Docker</h2>
+<h3 id="事前準備">事前準備</h3>
+<p>確保您的主機有以下套件：</p>
+<ul>
+<li>Docker</li>
+<li>Git</li>
+<li>openssl</li>
+</ul>
+<h3 id="創建目錄">創建目錄</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> -p container/supabase</span><br></pre></td></tr></table></figure>
+<h3 id="Clone-專案">Clone 專案</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth 1 https://github.com/supabase/supabase</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>--depth</code>: 只取得該 Git 倉庫的最新一次提交 (commit)，而不是克隆完整的歷史記錄，減少下載的數據量，提高速度。</p>
+</blockquote>
+<h3 id="複製-compose-檔案與環境設定檔">複製 compose 檔案與環境設定檔</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> -rf supabase/docker/* container/supabase &amp;&amp; <span class="built_in">cp</span> supabase/docker/.env.example container/supabase/.env &amp;&amp; <span class="built_in">rm</span> -rf supabase</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可以根據所需，自行修改 ENV 設定檔內容。</p>
+</blockquote>
+<h3 id="修改環境設定檔">修改環境設定檔</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi supabase-project/.env</span><br></pre></td></tr></table></figure>
+<p>預設內容如下。</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line">############</span><br><span class="line"># Secrets</span><br><span class="line"># YOU MUST CHANGE THESE BEFORE GOING INTO PRODUCTION</span><br><span class="line">############</span><br><span class="line"></span><br><span class="line">POSTGRES_PASSWORD=your-super-secret-and-long-postgres-password</span><br><span class="line">JWT_SECRET=your-super-secret-jwt-token-<span class="keyword">with</span>-at-least<span class="number">-32</span>-characters-long</span><br><span class="line">ANON_KEY=your-anon-key</span><br><span class="line">SERVICE_ROLE_KEY=your-service-role-key</span><br><span class="line">DASHBOARD_USERNAME=supabase</span><br><span class="line">DASHBOARD_PASSWORD=this_password_is_insecure_and_should_be_updated</span><br><span class="line">SECRET_KEY_BASE=your-secret-key-base</span><br><span class="line">VAULT_ENC_KEY=your-encryption-key<span class="number">-32</span>-chars-min</span><br><span class="line">PG_META_CRYPTO_KEY=your-encryption-key<span class="number">-32</span>-chars-min</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">############</span><br><span class="line"># Database - You can change these to any PostgreSQL database that has logical replication enabled.</span><br><span class="line">############</span><br><span class="line"></span><br><span class="line">POSTGRES_HOST=db</span><br><span class="line">POSTGRES_DB=postgres</span><br><span class="line">POSTGRES_PORT=<span class="number">5432</span></span><br><span class="line"># default user is postgres</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">############</span><br><span class="line"># Supavisor -- Database pooler</span><br><span class="line">############</span><br><span class="line"># Port Supavisor listens on for transaction pooling connections</span><br><span class="line">POOLER_PROXY_PORT_TRANSACTION=<span class="number">6543</span></span><br><span class="line"># Maximum number <span class="keyword">of</span> PostgreSQL connections Supavisor opens per pool</span><br><span class="line">POOLER_DEFAULT_POOL_SIZE=<span class="number">20</span></span><br><span class="line"># Maximum number <span class="keyword">of</span> client connections Supavisor accepts per pool</span><br><span class="line">POOLER_MAX_CLIENT_CONN=<span class="number">100</span></span><br><span class="line"># Unique tenant identifier</span><br><span class="line">POOLER_TENANT_ID=your-tenant-id</span><br><span class="line"># Pool size for internal metadata storage used by Supavisor</span><br><span class="line"># This is separate <span class="keyword">from</span> client connections and used only by Supavisor itself</span><br><span class="line">POOLER_DB_POOL_SIZE=<span class="number">5</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">############</span><br><span class="line"># API Proxy - Configuration for the Kong Reverse proxy.</span><br><span class="line">############</span><br><span class="line"></span><br><span class="line">KONG_HTTP_PORT=<span class="number">8000</span></span><br><span class="line">KONG_HTTPS_PORT=<span class="number">8443</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">############</span><br><span class="line"># API - Configuration for PostgREST.</span><br><span class="line">############</span><br><span class="line"></span><br><span class="line">PGRST_DB_SCHEMAS=public,storage,graphql_public</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">############</span><br><span class="line"># Auth - Configuration for the GoTrue authentication server.</span><br><span class="line">############</span><br><span class="line"></span><br><span class="line">## General</span><br><span class="line">SITE_URL=http:<span class="comment">//localhost:3000</span></span><br><span class="line">ADDITIONAL_REDIRECT_URLS=</span><br><span class="line">JWT_EXPIRY=<span class="number">3600</span></span><br><span class="line">DISABLE_SIGNUP=false</span><br><span class="line">API_EXTERNAL_URL=http:<span class="comment">//localhost:8000</span></span><br><span class="line"></span><br><span class="line">## Mailer Config</span><br><span class="line">MAILER_URLPATHS_CONFIRMATION=<span class="string">&quot;/auth/v1/verify&quot;</span></span><br><span class="line">MAILER_URLPATHS_INVITE=<span class="string">&quot;/auth/v1/verify&quot;</span></span><br><span class="line">MAILER_URLPATHS_RECOVERY=<span class="string">&quot;/auth/v1/verify&quot;</span></span><br><span class="line">MAILER_URLPATHS_EMAIL_CHANGE=<span class="string">&quot;/auth/v1/verify&quot;</span></span><br><span class="line"></span><br><span class="line">## Email auth</span><br><span class="line">ENABLE_EMAIL_SIGNUP=true</span><br><span class="line">ENABLE_EMAIL_AUTOCONFIRM=false</span><br><span class="line">SMTP_ADMIN_EMAIL=admin@example.com</span><br><span class="line">SMTP_HOST=supabase-mail</span><br><span class="line">SMTP_PORT=<span class="number">2500</span></span><br><span class="line">SMTP_USER=fake_mail_user</span><br><span class="line">SMTP_PASS=fake_mail_password</span><br><span class="line">SMTP_SENDER_NAME=fake_sender</span><br><span class="line">ENABLE_ANONYMOUS_USERS=false</span><br><span class="line"></span><br><span class="line">## Phone auth</span><br><span class="line">ENABLE_PHONE_SIGNUP=true</span><br><span class="line">ENABLE_PHONE_AUTOCONFIRM=true</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">############</span><br><span class="line"># Studio - Configuration for the Dashboard</span><br><span class="line">############</span><br><span class="line"></span><br><span class="line">STUDIO_DEFAULT_ORGANIZATION=Default Organization</span><br><span class="line">STUDIO_DEFAULT_PROJECT=Default Project</span><br><span class="line"></span><br><span class="line"># replace <span class="keyword">if</span> you intend to use Studio outside <span class="keyword">of</span> localhost</span><br><span class="line">SUPABASE_PUBLIC_URL=http:<span class="comment">//localhost:8000</span></span><br><span class="line"></span><br><span class="line"># Enable webp support</span><br><span class="line">IMGPROXY_ENABLE_WEBP_DETECTION=true</span><br><span class="line"></span><br><span class="line"># Add your OpenAI API key to enable SQL Editor Assistant</span><br><span class="line">OPENAI_API_KEY=</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">############</span><br><span class="line"># Functions - Configuration for Functions</span><br><span class="line">############</span><br><span class="line"># NOTE: VERIFY_JWT applies to all functions. Per-function VERIFY_JWT is not supported yet.</span><br><span class="line">FUNCTIONS_VERIFY_JWT=false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">############</span><br><span class="line"># Logs - Configuration for Analytics</span><br><span class="line"># Please refer to https:<span class="comment">//supabase.com/docs/reference/self-hosting-analytics/introduction</span></span><br><span class="line">############</span><br><span class="line"></span><br><span class="line"># Change vector.toml sinks to reflect this change</span><br><span class="line"># these cannot be the same value</span><br><span class="line">LOGFLARE_PUBLIC_ACCESS_TOKEN=your-super-secret-and-long-logflare-key-public</span><br><span class="line">LOGFLARE_PRIVATE_ACCESS_TOKEN=your-super-secret-and-long-logflare-key-private</span><br><span class="line"></span><br><span class="line"># Docker socket location - this value will differ depending on your OS</span><br><span class="line">DOCKER_SOCKET_LOCATION=/var/run/docker.sock</span><br><span class="line"></span><br><span class="line"># Google Cloud Project details</span><br><span class="line">GOOGLE_PROJECT_ID=GOOGLE_PROJECT_ID</span><br><span class="line">GOOGLE_PROJECT_NUMBER=GOOGLE_PROJECT_NUMBER</span><br></pre></td></tr></table></figure>
+<h4 id="生成-SECRET">生成 SECRET</h4>
+<p>JWT_SECRET &amp; SECRET_KEY_BASE &amp; VAULT_ENC_KEY &amp; PG_META_CRYPTO_KEY 這四個環境變數請使用以下命令分別生成。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl rand -<span class="built_in">base64</span> 32</span><br></pre></td></tr></table></figure>
+<p>生成完畢後請到 .env 裡修改。</p>
+<h4 id="重要環境變數說明">重要環境變數說明</h4>
+<ul>
+<li><code>JWT_SECRET</code>: 用於身份驗證。</li>
+<li><code>POSTGRES_PASSWORD</code>: 資料庫密碼。</li>
+<li><code>POSTGRES_PORT</code>: 資料庫連接埠。</li>
+</ul>
+<h3 id="修改-compose-yml">修改 compose.yml</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi docker-compose.yml</span><br></pre></td></tr></table></figure>
+<p>修改 docker-compose.yml，把 supavisor 的 5432 埠號註解。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">supavisor:</span></span><br><span class="line">  <span class="attr">container_name:</span> <span class="string">supabase-pooler</span></span><br><span class="line">  <span class="attr">image:</span> <span class="string">supabase/supavisor:2.7.4</span></span><br><span class="line">  <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="comment">#      - $&#123;POSTGRES_PORT&#125;:5432</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">$&#123;POOLER_PROXY_PORT_TRANSACTION&#125;:6543</span></span><br></pre></td></tr></table></figure>
+<p>開放 db 的 5432 埠號，方便我們後續連結資料庫。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">db:</span></span><br><span class="line">  <span class="attr">container_name:</span> <span class="string">supabase-db</span></span><br><span class="line">  <span class="attr">image:</span> <span class="string">supabase/postgres:15.8.1.085</span></span><br><span class="line">  <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">$&#123;POSTGRES_PORT&#125;:5432</span></span><br></pre></td></tr></table></figure>
+<h3 id="啟動服務">啟動服務</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> supabase-project &amp;&amp; docker compose up -d</span><br></pre></td></tr></table></figure>
+<h3 id="查看服務">查看服務</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker compose ps</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>重點服務介紹：</p>
+<ul>
+<li><code>PostgreSQL</code>: 資料庫服務。</li>
+<li><code>PostgREST</code>: 資料庫自動生成的 REST API。</li>
+<li><code>Storage</code>: 檔案儲存服務。</li>
+<li><code>Kong</code>: API Gateway。</li>
+<li><code>Supabase Studio</code>: 網頁管理界面。</li>
+</ul>
+</blockquote>
+<h2 id="進入-Supabase-Dashboard">進入 Supabase Dashboard</h2>
+<p>打開瀏覽器並輸入 <code>&lt;your ip&gt;:8000</code>，輸入剛剛在 env 檔設定的 Dashboard 帳密即可登入。<br>
+<img src="image-1.png" alt=""></p>
+<h2 id="如何連線到資料庫">如何連線到資料庫</h2>
+<p>點擊 Dashboard 上的 <code>connect</code> 按鈕即可查看連線方式<br>
+<img src="image-2.png" alt=""></p>
+<p>選擇您的連線方式進行連線測試。<br>
+<img src="image-3.png" alt=""></p>
+<h2 id="建立資料表">建立資料表</h2>
+<p>創建一個新的 Table，並新增 <code>name</code> 與 <code>age</code> 欄位，如下圖設定。<br>
+<img src="image-5.png" alt=""><br>
+<img src="image-6.png" alt=""></p>
+<p>按下 <code>Save</code> 儲存按鈕，即可看到我們創建的學生資料表。</p>
+<p>接下來我們就可以對這張 Table 進行 CRUD 了。</p>
+<h2 id="連接範例：Python">連接範例：Python</h2>
+<p>Supabase 有提供多項內建 Client API 進行連接<br>
+<img src="image-4.png" alt=""></p>
+<p>我們使用 Python 來對資料庫進行 CRUD。</p>
+<blockquote>
+<p>詳細內容可以參考 <a target="_blank" rel="noopener" href="https://supabase.com/docs/reference/python/insert">Supabase Python Docs</a></p>
+</blockquote>
+<h3 id="事前準備-2">事前準備</h3>
+<p>確保您的主機有以下套件：</p>
+<ul>
+<li>Docker</li>
+<li>Devcontainer</li>
+</ul>
+<h3 id="初始開發環境設定">初始開發環境設定</h3>
+<p>Devcontainer.json</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PythonSandbox (Ubuntu)&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;image&quot;</span><span class="punctuation">:</span> <span class="string">&quot;mcr.microsoft.com/devcontainers/base:jammy&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;features&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;ghcr.io/va-h/devcontainers-features/uv:1&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;customizations&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;vscode&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;extensions&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;donjayamanne.python-extension-pack&quot;</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;remoteUser&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vscode&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> supabase-test &amp;&amp; <span class="built_in">cd</span> supabase-test</span><br><span class="line">uv init .</span><br><span class="line">uv add supabase dotenv</span><br></pre></td></tr></table></figure>
+<h3 id="Init-Connection">Init Connection</h3>
+<p>在專案根目錄中創建 .env 檔案，並輸入以下內容。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">SUPABASE_URL</span>=<span class="string">&quot;your supabase url&quot;</span></span><br><span class="line"><span class="attr">SUPABASE_KEY</span>=<span class="string">&quot;your supabase key&quot;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>為了後續方便做資料庫操作，SUPABASE_KEY 請設定為 <code>SERVICE_ROLE_KEY</code></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> dotenv</span><br><span class="line"><span class="keyword">from</span> supabase <span class="keyword">import</span> create_client, Client</span><br><span class="line"></span><br><span class="line">url: <span class="built_in">str</span> = dotenv.get_key(<span class="string">&quot;.env&quot;</span>, <span class="string">&quot;SUPABASE_URL&quot;</span>)</span><br><span class="line">key: <span class="built_in">str</span> = dotenv.get_key(<span class="string">&quot;.env&quot;</span>, <span class="string">&quot;SUPABASE_KEY&quot;</span>)</span><br><span class="line">supabase: Client = create_client(url, key)</span><br></pre></td></tr></table></figure>
+<h3 id="Create">Create</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">response = (</span><br><span class="line">    supabase.schema(<span class="string">&quot;public&quot;</span>)</span><br><span class="line">    .table(<span class="string">&quot;student&quot;</span>)</span><br><span class="line">    .insert(&#123;<span class="string">&quot;id&quot;</span>: <span class="number">1</span>, <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Bob&quot;</span>, <span class="string">&quot;age&quot;</span>: <span class="number">20</span>&#125;)</span><br><span class="line">    .execute()</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Supabase 自架或官方的 PostgREST 只會暴露三個 schema 給 API 使用。</p>
+<ul>
+<li>public: 主要資料表存放的地方</li>
+<li>storage: 給 Supabase Storage API 使用</li>
+<li>graphql_public: 給 GraphQL API 使用</li>
+</ul>
+</blockquote>
+<h3 id="Read">Read</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">response = (</span><br><span class="line">    supabase.schema(<span class="string">&quot;public&quot;</span>)</span><br><span class="line">    .table(<span class="string">&quot;student&quot;</span>)</span><br><span class="line">    .select(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">    .execute()</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="Update">Update</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">response = (</span><br><span class="line">    supabase.schema(<span class="string">&quot;public&quot;</span>)</span><br><span class="line">    .table(<span class="string">&quot;student&quot;</span>)</span><br><span class="line">    .update(&#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;Alice&quot;</span>&#125;)</span><br><span class="line">    .eq(<span class="string">&quot;id&quot;</span>, <span class="number">1</span>)</span><br><span class="line">    .execute()</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="Delete">Delete</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">response = (</span><br><span class="line">    supabase.schema(<span class="string">&quot;public&quot;</span>)</span><br><span class="line">    .table(<span class="string">&quot;student&quot;</span>)</span><br><span class="line">    .delete()</span><br><span class="line">    .eq(<span class="string">&quot;id&quot;</span>, <span class="number">1</span>)</span><br><span class="line">    .execute()</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog.raylon.dev">RayLon</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章連結: </span><span class="post-copyright-info"><a href="https://blog.raylon.dev/2025/12/06/supabase-1/">https://blog.raylon.dev/2025/12/06/supabase-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 授權協議。轉載請註明來源 <a href="https://blog.raylon.dev" target="_blank">龍の部落格</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="addtoany"><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_button_email"></a><a class="a2a_button_copy_link"></a><a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a></div></div><script async="async" src="https://static.addtoany.com/menu/page.js"></script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/assets/profile.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">RayLon</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RayLonscholar"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">尚無公告</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%B4%B9"><span class="toc-number">1.</span> <span class="toc-text">介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Self-hosting-with-Docker"><span class="toc-number">2.</span> <span class="toc-text">Self-hosting with Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%89%8D%E6%BA%96%E5%82%99"><span class="toc-number">2.1.</span> <span class="toc-text">事前準備</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%B5%E5%BB%BA%E7%9B%AE%E9%8C%84"><span class="toc-number">2.2.</span> <span class="toc-text">創建目錄</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Clone-%E5%B0%88%E6%A1%88"><span class="toc-number">2.3.</span> <span class="toc-text">Clone 專案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A4%87%E8%A3%BD-compose-%E6%AA%94%E6%A1%88%E8%88%87%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="toc-number">2.4.</span> <span class="toc-text">複製 compose 檔案與環境設定檔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="toc-number">2.5.</span> <span class="toc-text">修改環境設定檔</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90-SECRET"><span class="toc-number">2.5.1.</span> <span class="toc-text">生成 SECRET</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8%E8%AA%AA%E6%98%8E"><span class="toc-number">2.5.2.</span> <span class="toc-text">重要環境變數說明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-compose-yml"><span class="toc-number">2.6.</span> <span class="toc-text">修改 compose.yml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%95%9F%E5%8B%95%E6%9C%8D%E5%8B%99"><span class="toc-number">2.7.</span> <span class="toc-text">啟動服務</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8B%99"><span class="toc-number">2.8.</span> <span class="toc-text">查看服務</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%B2%E5%85%A5-Supabase-Dashboard"><span class="toc-number">3.</span> <span class="toc-text">進入 Supabase Dashboard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%A3%E7%B7%9A%E5%88%B0%E8%B3%87%E6%96%99%E5%BA%AB"><span class="toc-number">4.</span> <span class="toc-text">如何連線到資料庫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E8%B3%87%E6%96%99%E8%A1%A8"><span class="toc-number">5.</span> <span class="toc-text">建立資料表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%A3%E6%8E%A5%E7%AF%84%E4%BE%8B%EF%BC%9APython"><span class="toc-number">6.</span> <span class="toc-text">連接範例：Python</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%89%8D%E6%BA%96%E5%82%99-2"><span class="toc-number">6.1.</span> <span class="toc-text">事前準備</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A"><span class="toc-number">6.2.</span> <span class="toc-text">初始開發環境設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Init-Connection"><span class="toc-number">6.3.</span> <span class="toc-text">Init Connection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create"><span class="toc-number">6.4.</span> <span class="toc-text">Create</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Read"><span class="toc-number">6.5.</span> <span class="toc-text">Read</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Update"><span class="toc-number">6.6.</span> <span class="toc-text">Update</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Delete"><span class="toc-number">6.7.</span> <span class="toc-text">Delete</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/06/supabase-1/" title="本機自架 supabase">本機自架 supabase</a><time datetime="2025-12-06T03:38:51.000Z" title="發表於 2025-12-06 11:38:51">2025-12-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/01/java-5/" title="使用 Java 建置學生管理系統 API">使用 Java 建置學生管理系統 API</a><time datetime="2025-11-01T06:23:19.000Z" title="發表於 2025-11-01 14:23:19">2025-11-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/25/java-4/" title="Java 基礎(四)">Java 基礎(四)</a><time datetime="2025-10-25T06:47:00.000Z" title="發表於 2025-10-25 14:47:00">2025-10-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/04/java-3/" title="Java 基礎(三)">Java 基礎(三)</a><time datetime="2025-10-04T07:17:17.000Z" title="發表於 2025-10-04 15:17:17">2025-10-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/11/java-2/" title="Java 基礎(二)">Java 基礎(二)</a><time datetime="2025-09-11T01:06:01.000Z" title="發表於 2025-09-11 09:06:01">2025-09-11</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2024 - 2025 By RayLon</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日夜模式切換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂端"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜尋</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  資料載入中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜尋文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
